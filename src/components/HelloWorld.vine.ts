@@ -18,9 +18,14 @@ function HelloWorld(props: { msg: string }) {
       text: todo
     }
     list.value.push(todoObj)
+    // 下面这种写法 导致响应式丢失
+    // list.value = [...list.value, todoObj]
   }
   function delTodo(id: number): void {
-    list.value = list.value.filter(o => o.id !== id)
+    const index = list.value.findIndex(o => o.id === id)
+    list.value.splice(index, 1)
+    // 下面这种写法 导致响应式丢失
+    // list.value = list.value.filter(o => o.id !== id)
   }
   return vine`
     <h1>{{ msg }}</h1>

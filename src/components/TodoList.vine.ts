@@ -10,9 +10,7 @@ function TodoList(props: { todos: Todo[] }) {
   const deleteTodo = (id: number) => {
     myEmit('delTodo', id)
   }
-  console.log(props)
   const { todos } = props
-  console.log(todos)
   return vine`
     <div v-if="!todos.length">暂无待办事项</div>
     <div v-else>
